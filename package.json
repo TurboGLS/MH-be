@@ -1,0 +1,42 @@
+{
+  "name": "mh-be",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
+  },
+  "author": "Matteazzi Tomas",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.0",
+    "morgan": "^1.10.0",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.2",
+    "@types/mongoose": "^5.11.96",
+    "@types/morgan": "^1.9.9",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2"
+  }
+}
