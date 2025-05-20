@@ -1,16 +1,19 @@
 import 'reflect-metadata';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import app from './app';
 import mongoose from 'mongoose';
 
 mongoose.set('debug', true);
-mongoose.connect('mongodb://127.0.0.1:27017/local')
-  .then(_ => {
+mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/local')
+  .then(() => {
     console.log('Connected to db');
-    app.listen(3000, () => {
-      console.log('Server listening on port 3000');
+    const PORT = process.env.PORT || 3000;
+    app.listen(Number(PORT), () => {
+      console.log(`Server listening on port ${PORT}`);
     });
   })
   .catch(err => {
-    console.error(err);
-  })
+    console.error('MongoDB connection error:', err);
+  });

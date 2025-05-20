@@ -6,7 +6,13 @@ import bodyParser from 'body-parser';
 
 const app = express();
 
-app.use(cors());
+const allowedOrigin = process.env.ALLOWED_ORIGIN || '*';
+
+app.use(cors({
+  origin: allowedOrigin,
+  optionsSuccessStatus: 200
+}));
+
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 
