@@ -55,5 +55,4 @@ temp/
 .git/
 
 # Others
-package-lock.json
 yarn.lock
