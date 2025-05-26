@@ -17,4 +17,13 @@ userSchema.set('toJSON', {
     }
 });
 
-export const UserModel = model<User>('user', userSchema);
+userSchema.set('toObject', {
+    virtuals: true,
+    transform: (_, ret) => {
+        delete ret._id;
+        delete ret.__v;
+        return ret;
+    }
+});
+
+export const UserModel = model<User>('User', userSchema);

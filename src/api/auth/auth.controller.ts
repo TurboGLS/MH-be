@@ -44,7 +44,7 @@ export const login = async (
                     res.status(401).json({ error: 'LoginError', message: info.message });
                     return;
                 }
-                const token = jwt.sing(user, JWT_SECRET, { expiresIn: '7 days' });
+                const token = jwt.sign(user, JWT_SECRET, { expiresIn: '7 days' });
                 res.status(200).json({ user, token });
             } catch (err) {
                 next(err);

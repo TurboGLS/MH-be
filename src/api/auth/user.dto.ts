@@ -13,6 +13,8 @@ export class AddUserDTO {
     role?: 'admin' | 'user';
 
     @IsString()
-    @IsStrongPassword()
+    @IsStrongPassword({
+        minLength: 8
+    })
     password!: string;
 }
