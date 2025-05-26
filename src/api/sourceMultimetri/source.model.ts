@@ -8,8 +8,8 @@ const SourceSchema = new Schema<sourceMultimetri>({
     serverName: { type: String, required: true },
     topicName: { type: String, required: true },
     addressModBus: { type: String, required: true },
-    addressDeviceId: { type: String, required: true },
-    addressIp: { type: String, required: true },
+    addressDeviceId: { type: String, required: false },
+    addressIp: { type: String, required: false },
 });
 
 SourceSchema.set('toJSON', {
@@ -20,7 +20,7 @@ SourceSchema.set('toJSON', {
     },
 });
 
-// crea virtual per address unico
+// creare virtual per address unico
 SourceSchema.virtual('address').get(function() {
     return `${this.addressModBus},${this.addressDeviceId},${this.addressIp}`;
 });

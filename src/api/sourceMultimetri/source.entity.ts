@@ -5,6 +5,6 @@ export type sourceMultimetri = {
     serverName: string;
     topicName: string;
     addressModBus: string;
-    addressDeviceId: string;
-    addressIp: string;
+    addressDeviceId?: string;
+    addressIp?: string;
 }

@@ -1,9 +1,8 @@
 import { Router } from 'express';
+import sourceRouter from './sourceMultimetri/source.router'
 
 const router = Router();
 
-router.get('/ping', (req, res) => {
-    res.json({ message: 'pong' });
-});
+router.use('/source', sourceRouter);
 
 export default router;
