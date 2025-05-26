@@ -1,15 +1,49 @@
 import { NextFunction, Request, Response } from "express";
-import { pingService } from "./source.service";
+import { getDataByType, pingService } from "./source.service";
 
 export const pingController = async (
     req: Request,
     res: Response,
-    next: NextFunction) => {
-        try {
-            const result = await pingService();
+    next: NextFunction
+) => {
+    try {
+        const result = await pingService();
 
-            res.status(200).json(result);
-        } catch (err) {
-            next(err);
+        res.status(200).json(result);
+    } catch (err) {
+        next(err);
+    }
+};
+
+export const getData = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const typeParam = req.query.type ;
+
+        if (typeof typeParam !== 'string') {
+            res.status(400).json({ error: "Paramentro 'type' mancante o non valido" });
+            return;
         }
-    };
+
+        const typeNumber = parseInt(typeParam);
+
+        if (isNaN(typeNumber)) {
+            res.status(400).json({ error: "Parametro 'type' non è un numero valido" });
+            return;
+        }
+
+        const results = await getDataByType(typeNumber);
+
+        if (results.length === 0) {
+            res.status(404).json({ message: "Nessun multimetro trovato per il tipo richiest"});
+            return;
+        }
+
+        res.status(200).json(results);
+    } catch (err) {
+        next(err);
+    }
+}
