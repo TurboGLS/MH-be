@@ -11,7 +11,7 @@ MultimetriSchema.set('toJSON', {
     transform: (_, ret) => {
         delete ret._id;
         return ret;
-    }
+    },
 });
 
 export const MultimetriModel = model<Multimetri>('Multimetri', MultimetriSchema);
