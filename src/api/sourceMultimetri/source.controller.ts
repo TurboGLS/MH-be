@@ -1,19 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { getDataByType, pingService } from "./source.service";
-
-export const pingController = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) => {
-    try {
-        const result = await pingService();
-
-        res.status(200).json(result);
-    } catch (err) {
-        next(err);
-    }
-};
+import { getDataByType } from "./source.service";
 
 export const getData = async (
     req: Request,
