@@ -44,7 +44,8 @@ export const login = async (
                     res.status(401).json({ error: 'LoginError', message: info?.message || 'Invalid credentials' });
                     return;
                 }
-                const token = jwt.sign(user, JWT_SECRET, { expiresIn: '7 days' });
+                const payload = { id: user.id, role: user.role }
+                const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '8h' });
                 res.status(200).json({ user, token });
             } catch (err) {
                 next(err);
