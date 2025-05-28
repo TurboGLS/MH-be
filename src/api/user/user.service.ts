@@ -14,11 +14,36 @@ export class UserExistsError extends Error {
     }
 }
 
+export class EmailExistsError extends Error {
+    constructor() {
+        super();
+        this.name = 'EmailExists';
+        this.message = 'email already in use';
+    }
+}
+
+export class MissingCredentialsError extends Error {
+    constructor() {
+        super();
+        this.name = 'MissingCredentialsError';
+        this.message = 'Username e Password sono obbliatori';
+    }
+}
+
 export class UserService {
     async add(user: Omit<User, 'role'>, credentials: { username: string, password: string }): Promise<User> {
-        const existingIdentity = await UserIdentityModel.findOne({'credentials.username': credentials.username});
+        if (!credentials.username || !credentials.password) {
+            throw new MissingCredentialsError();
+        }
+
+        const existingIdentity = await UserIdentityModel.findOne({ 'credentials.username': credentials.username });
         if (existingIdentity) {
             throw new UserExistsError();
+        }
+
+        const existingEmail = await UserModel.findOne({ email: user.email });
+        if (existingEmail) {
+            throw new EmailExistsError();
         }
 
         let role: 'admin' | 'user';

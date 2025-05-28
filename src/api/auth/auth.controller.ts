@@ -2,14 +2,14 @@ import { NextFunction, Request, Response } from "express"
 import { TypedRequest } from "../../lib/typed-request.interface"
 import { AddUserDTO } from "./user.dto"
 import { omit, pick } from "lodash"
-import userSrv, { UserExistsError } from "../user/user.service"
+import userSrv, { EmailExistsError, MissingCredentialsError, UserExistsError } from "../user/user.service"
 import "../../lib/auth/local/local-strategy";
 import passport from "passport"
 import jwt from "jsonwebtoken"
 import { JWT_SECRET } from "../../lib/auth/jwt/jwt-strategy"
 import { User } from "../user/user.entity"
 
-export const add = async (
+export const register = async (
     req: TypedRequest<AddUserDTO>,
     res: Response,
     next: NextFunction
@@ -17,12 +17,23 @@ export const add = async (
     try {
         const userData = omit(req.body, 'username', 'password') as User;
         const credentialsData = pick(req.body, 'username', 'password');
+
         const newUser = await userSrv.add(userData, credentialsData);
+
         res.json(newUser);
     } catch (err) {
         if (err instanceof UserExistsError) {
             res.status(400).json({ error: err.name, message: err.message });
         }
+
+        if (err instanceof MissingCredentialsError) {
+            res.status(400).json({ error: err.name, message: err.message });
+        }
+
+        if (err instanceof EmailExistsError) {
+            res.status(400).json({ error: err.name, message: err.message });
+        }
+
         next(err);
     }
 }
