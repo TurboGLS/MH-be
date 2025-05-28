@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
-import { sourceMultimetri } from "./source.entity";
+import { SourceMultimetri } from "./sourceMultimetri.entity";
 
-const SourceSchema = new Schema<sourceMultimetri>({
+const SourceSchema = new Schema<SourceMultimetri>({
     type: { type: String, required: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
@@ -32,4 +32,4 @@ SourceSchema.virtual('address').get(function() {
     return parts.join(',');
 });
 
-export const SourceModel = model<sourceMultimetri>('source', SourceSchema);
+export const SourceMultimetriModel = model<SourceMultimetri>('SourceMultimetri', SourceSchema);

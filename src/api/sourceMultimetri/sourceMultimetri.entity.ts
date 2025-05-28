@@ -1,4 +1,4 @@
-export type sourceMultimetri = {
+export type SourceMultimetri = {
     type: string;
     name: string;
     description: string;

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { source } from './source.data'; // o './source' a seconda del percorso
-import { SourceModel } from '../sourceMultimetri/source.model'; // adatta il percorso al tuo progetto
+import { sourceMultimetri } from './sourceMultimetri.data'; // o './source' a seconda del percorso
+import { SourceMultimetriModel } from '../sourceMultimetri/sourceMultimetri.model'; // adatta il percorso al tuo progetto
 
 dotenv.config();
 
@@ -18,12 +18,12 @@ mongoose.connect(uri)
     console.log('📡 Connessione riuscita');
 
     // 🧹 Svuota la collezione esistente
-    await SourceModel.deleteMany({});
+    await SourceMultimetriModel.deleteMany({});
 
     // 🚀 Inserisce i dati della lista "source"
-    await SourceModel.insertMany(source);
+    await SourceMultimetriModel.insertMany(sourceMultimetri);
 
-    console.log(`✅ Inseriti ${source.length} elementi in "source"`);
+    console.log(`✅ Inseriti ${sourceMultimetri.length} elementi in "source"`);
     mongoose.disconnect();
   })
   .catch(err => {

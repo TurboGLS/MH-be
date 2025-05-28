@@ -1,6 +1,6 @@
-import { sourceMultimetri } from '../sourceMultimetri/source.entity';
+import { SourceMultimetri } from '../sourceMultimetri/sourceMultimetri.entity';
 
-export const source: sourceMultimetri[] = [
+export const sourceMultimetri: SourceMultimetri[] = [
     {
         type: '1',
         name: 'PowerEqAux§_INT',

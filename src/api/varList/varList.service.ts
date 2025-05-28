@@ -1,9 +1,9 @@
-import { SourceModel } from "../sourceMultimetri/source.model";
+import { SourceMultimetriModel } from "../sourceMultimetri/sourceMultimetri.model";
 import { Parser } from 'json2csv';
 
 export async function generateVarListCSV(type: string, auxQuantity: number, device: number, ipAddress: string) {
      // prendo i parametri dalla source (varlist)
-     const baseParam = await SourceModel.find({ type });
+     const baseParam = await SourceMultimetriModel.find({ type });
 
      if (!baseParam.length) {
         throw new Error(`Parametri varlist non trovati per il tipo ${type}`);
