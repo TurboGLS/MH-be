@@ -3,6 +3,6 @@ import { downloadVarList } from "./varList.controller";
 
 const router = Router();
 
-router.get('/download', downloadVarList);
+router.post('/download', downloadVarList);
 
 export default router;
