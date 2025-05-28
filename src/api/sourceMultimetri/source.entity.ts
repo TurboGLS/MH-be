@@ -1,5 +1,5 @@
 export type sourceMultimetri = {
-    type: number;
+    type: string;
     name: string;
     description: string;
     serverName: string;

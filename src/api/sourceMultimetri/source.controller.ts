@@ -14,14 +14,7 @@ export const getData = async (
             return;
         }
 
-        const typeNumber = parseInt(typeParam);
-
-        if (isNaN(typeNumber)) {
-            res.status(400).json({ error: "Parametro 'type' non è un numero valido" });
-            return;
-        }
-
-        const results = await getDataByType(typeNumber);
+        const results = await getDataByType(typeParam);
 
         if (results.length === 0) {
             res.status(404).json({ message: "Nessun multimetro trovato per il tipo richiest"});

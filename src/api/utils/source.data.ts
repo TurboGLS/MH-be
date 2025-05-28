@@ -2,7 +2,7 @@ import { sourceMultimetri } from '../sourceMultimetri/source.entity';
 
 export const source: sourceMultimetri[] = [
     {
-        type: 1,
+        type: '1',
         name: 'PowerEqAux§_INT',
         description: 'Potenza attiva trifase - d3scription - Letta come INTEGER',
         serverName: 'MODBUS',
@@ -12,7 +12,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'PowerEqAux§_Onchange',
         description: 'Per ONCHANGE (script): stesso valore di PowerEqAux§',
         serverName: 'MEM',
@@ -22,7 +22,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 1,
+        type: '1',
         name: 'PowerEqAux§',
         description: 'Potenza attiva trifase - d3scription [kW] - Convertita',
         serverName: 'MEM',
@@ -32,7 +32,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 1,
+        type: '1',
         name: 'ReactPowerEqAux§_INT',
         description: 'Potenza reattiva trifase - d3scription [kvar] - letta come INTEGER',
         serverName: 'MODBUS',
@@ -42,7 +42,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'ReactPowerEqAux§',
         description: 'Potenza reattiva trifase - d3scription [kvar] - Convertita',
         serverName: 'MEM',
@@ -52,7 +52,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 1,
+        type: '1',
         name: 'CosphiAux§_INT',
         description: 'Fattore di potenza - d3scription - Letto come INTEGER',
         serverName: 'MODBUS',
@@ -62,7 +62,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'CosphiAux§',
         description: 'Fattore di potenza - d3scription - Convertito',
         serverName: 'MEM',
@@ -72,7 +72,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 1,
+        type: '1',
         name: 'EnergyAux§',
         description: 'Energia attiva assorbita (positiva) - d3scription [kWh]',
         serverName: 'MODBUS',
@@ -82,7 +82,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'NegEnergyAux§',
         description: 'Energia attiva ceduta (negativa) - d3scription [kWh]',
         serverName: 'MODBUS',
@@ -92,7 +92,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'VoltageL1NAux§',
         description: 'Tensione tra fase 1 e neutro - d3scription [V]',
         serverName: 'MODBUS',
@@ -102,7 +102,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'VoltageL2NAux§',
         description: 'Tensione tra fase 2 e neutro - d3scription [V]',
         serverName: 'MODBUS',
@@ -112,7 +112,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'VoltageL3NAux§',
         description: 'Tensione tra fase 3 e neutro - d3scription [V]',
         serverName: 'MODBUS',
@@ -122,7 +122,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'CurrentL1Aux§',
         description: 'Corrente fase 1 - d3scription [A]',
         serverName: 'MODBUS',
@@ -132,7 +132,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'CurrentL2Aux§',
         description: 'Corrente fase 2 - d3scription [A]',
         serverName: 'MODBUS',
@@ -142,7 +142,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'CurrentL3Aux§',
         description: 'Corrente fase 3 - d3scription [A]',
         serverName: 'MODBUS',
@@ -152,7 +152,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 1,
+        type: '1',
         name: 'IdlePowerAux§',
         description: 'Valore potenza passaggio ON -> STANDBY consumi elettrici Aux§',
         serverName: 'MEM',
@@ -162,7 +162,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 1,
+        type: '1',
         name: 'StatoONAux§',
         description: '1 = stato ON, 0 = stato STANDBY',
         serverName: 'MEM',
@@ -172,7 +172,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 1,
+        type: '1',
         name: 'StatoSTANDBYAux§',
         description: '0 = stato ON, 1 = stato STANDBY',
         serverName: 'MEM',
@@ -182,7 +182,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 2,
+        type: '2',
         name: 'PowerEqAux§_UNS',
         description: 'Potenza attiva trifase - IME tipo 2 - d3scription - letta come INTEGER',
         serverName: 'MODBUS',
@@ -192,7 +192,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 2,
+        type: '2',
         name: 'SIGNPowerEqAux§',
         description: 'Segno potenza attiva trifase - IME tipo 2 - d3scription - 0 negativo, 1 positivo',
         serverName: 'MODBUS',
@@ -202,7 +202,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 2,
+        type: '2',
         name: 'PowerEqAux§',
         description: 'Potenza attiva trifase - IME tipo 2 - d3scription - [kW] - Convertita',
         serverName: 'MEM',
@@ -212,7 +212,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 2,
+        type: '2',
         name: 'PowerEqAux§_Onchange',
         description: 'Per ONCHANGE (script): stesso valore di PowerEqAux§',
         serverName: 'MEM',
@@ -222,7 +222,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 2,
+        type: '2',
         name: 'ReactPowerEqAux§_UNS',
         description: 'Potenza reattiva trifase - IME tipo 2 - d3scription - [kvar] - letta come INTEGER',
         serverName: 'MODBUS',
@@ -232,7 +232,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 2,
+        type: '2',
         name: 'SIGNReactPowerEqAux§',
         description: 'Segno potenza reattiva trifase - IME tipo 2 - d3scription - - 0 negativo, 1 positivo',
         serverName: 'MODBUS',
@@ -242,7 +242,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 2,
+        type: '2',
         name: 'ReactPowerEqAux§',
         description: 'Potenza reattiva trifase - IME tipo 2 - d3scription - [kvar] - Convertita',
         serverName: 'MEM',
@@ -252,7 +252,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 2,
+        type: '2',
         name: 'CosphiAux§',
         description: 'Fattore di potenza - IME tipo 2 - d3scription -',
         serverName: 'MODBUS',
@@ -262,7 +262,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 2,
+        type: '2',
         name: 'EnergyAux§',
         description: 'Energia attiva assorbita (positiva) -  IME tipo 2 - d3scription - [kWh]',
         serverName: 'MODBUS',
@@ -272,7 +272,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 2,
+        type: '2',
         name: 'NegEnergyAux§',
         description: 'Energia attiva ceduta (negativa) -  IME tipo 2 - d3scription - [kWh]',
         serverName: 'MODBUS',
@@ -282,7 +282,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 2,
+        type: '2',
         name: 'VoltageL1NAux§',
         description: 'Tensione tra fase 1 e neutro - IME tipo 2 - d3scription - [V]',
         serverName: 'MODBUS',
@@ -292,7 +292,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 2,
+        type: '2',
         name: 'CurrentL1Aux§',
         description: 'Corrente fase 1 - IME tipo 2 - d3scription - [A]',
         serverName: 'MODBUS',
@@ -302,7 +302,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 2,
+        type: '2',
         name: 'IdlePowerAux§',
         description: 'Valore potenza passaggio ON -> STANDBY consumi elettrici Aux§',
         serverName: 'MEM',
@@ -312,7 +312,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 2,
+        type: '2',
         name: 'StatoONAux§',
         description: '1 = stato ON, 0 = stato STANDBY',
         serverName: 'MEM',
@@ -322,7 +322,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 2,
+        type: '2',
         name: 'StatoSTANDBYAux§',
         description: '0 = stato ON, 1 = stato STANDBY',
         serverName: 'MEM',
@@ -332,7 +332,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 3,
+        type: '3',
         name: 'PowerEqAux§_INT',
         description: 'Potenza attiva trifase - IME tipo 3 - d3scription - Letta come INTEGER',
         serverName: 'MODBUS',
@@ -342,7 +342,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 3,
+        type: '3',
         name: 'PowerEqAux§_Onchange',
         description: 'Per ONCHANGE (script): stesso valore di PowerEqAux§',
         serverName: 'MEM',
@@ -352,7 +352,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 3,
+        type: '3',
         name: 'PowerEqAux§',
         description: 'Potenza attiva trifase - IME tipo 3 - d3scription - [kW] - Convertita',
         serverName: 'MEM',
@@ -362,7 +362,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 3,
+        type: '3',
         name: 'ReactPowerEqAux§_INT',
         description: 'Potenza reattiva trifase - IME tipo 3 - d3scription - [kvar] - letta come INTEGER',
         serverName: 'MODBUS',
@@ -372,7 +372,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 3,
+        type: '3',
         name: 'ReactPowerEqAux§',
         description: 'Potenza reattiva trifase- IME tipo 3 - d3scription - [kvar] - Convertita',
         serverName: 'MEM',
@@ -382,7 +382,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 3,
+        type: '3',
         name: 'CosphiAux§_INT',
         description: 'Fattore di potenza - IME tipo 3 - d3scription - Letto come INTEGER',
         serverName: 'MODBUS',
@@ -392,7 +392,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 3,
+        type: '3',
         name: 'CosphiAux§',
         description: 'Fattore di potenza - IME tipo 3 - d3scription - Convertito',
         serverName: 'MEM',
@@ -402,7 +402,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 3,
+        type: '3',
         name: 'EnergyAux§',
         description: 'Energia attiva assorbita (positiva) - IME tipo 3 - d3scription - [kWh]',
         serverName: 'MODBUS',
@@ -412,7 +412,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 3,
+        type: '3',
         name: 'NegEnergyAux§',
         description: 'Energia attiva ceduta (negativa)- IME tipo 3 - d3scription - [kWh]',
         serverName: 'MODBUS',
@@ -422,7 +422,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 3,
+        type: '3',
         name: 'VoltageL1NAux§',
         description: 'Tensione tra fase 1 e fase 2- IME tipo 3 - d3scription - [V]',
         serverName: 'MODBUS',
@@ -432,7 +432,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 3,
+        type: '3',
         name: 'CurrentL1Aux§',
         description: 'Corrente fase 1 - IME tipo 3 - d3scription - [A]',
         serverName: 'MODBUS',
@@ -442,7 +442,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 3,
+        type: '3',
         name: 'IdlePowerAux§',
         description: 'Valore potenza passaggio ON -> STANDBY consumi elettrici Aux§',
         serverName: 'MEM',
@@ -452,7 +452,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 3,
+        type: '3',
         name: 'StatoONAux§',
         description: '1 = stato ON, 0 = stato STANDBY',
         serverName: 'MEM',
@@ -462,7 +462,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 3,
+        type: '3',
         name: 'StatoSTANDBYAux§',
         description: '0 = stato ON, 1 = stato STANDBY',
         serverName: 'MEM',
@@ -472,7 +472,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 4,
+        type: '4',
         name: 'PowerEqAux§_INT',
         description: 'Potenza attiva trifase - IME tipo 4 - d3scription - Letta come INTEGER',
         serverName: 'MODBUS',
@@ -482,7 +482,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 4,
+        type: '4',
         name: 'PowerEqAux§_Onchange',
         description: 'Per ONCHANGE (script): stesso valore di PowerEqAux§',
         serverName: 'MEM',
@@ -492,7 +492,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 4,
+        type: '4',
         name: 'PowerEqAux§',
         description: 'Potenza attiva trifase - IME tipo 4 - d3scription - [kW] - Convertita',
         serverName: 'MEM',
@@ -502,7 +502,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 4,
+        type: '4',
         name: 'ReactPowerEqAux§_INT',
         description: 'Potenza reattiva trifase - IME tipo 4 - d3scription - [kvar] - letta come INTEGER',
         serverName: 'MODBUS',
@@ -512,7 +512,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 4,
+        type: '4',
         name: 'ReactPowerEqAux§',
         description: 'Potenza reattiva trifase - IME tipo 4 - d3scription - [kvar] - Convertita',
         serverName: 'MEM',
@@ -522,7 +522,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 4,
+        type: '4',
         name: 'CosphiAux§_INT',
         description: 'Fattore di potenza - IME tipo 4 - d3scription - Letto come INTEGER',
         serverName: 'MODBUS',
@@ -532,7 +532,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 4,
+        type: '4',
         name: 'CosphiAux§',
         description: 'Fattore di potenza - IME tipo 4 - d3scription - Convertito',
         serverName: 'MEM',
@@ -542,7 +542,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 4,
+        type: '4',
         name: 'EnergyAux§',
         description: 'Energia attiva assorbita (positiva) - IME tipo 4 - d3scription - [kWh]',
         serverName: 'MODBUS',
@@ -552,7 +552,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 4,
+        type: '4',
         name: 'NegEnergyAux§',
         description: 'Energia attiva ceduta (negativa) - IME tipo 4 - d3scription - [kWh]',
         serverName: 'MODBUS',
@@ -562,7 +562,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 4,
+        type: '4',
         name: 'VoltageL1NAux§',
         description: 'Tensione tra fase 1 e neutro - IME tipo 4 - d3scription - [V]',
         serverName: 'MODBUS',
@@ -572,7 +572,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 4,
+        type: '4',
         name: 'VoltageL1L2Aux§',
         description: 'Tensione tra fase 1 e fase 2 - IME tipo 4 - d3scription - [V]',
         serverName: 'MODBUS',
@@ -582,7 +582,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 4,
+        type: '4',
         name: 'CurrentL1Aux§',
         description: 'Corrente fase 1 - IME tipo 4 - d3scription - [A]',
         serverName: 'MODBUS',
@@ -592,7 +592,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 4,
+        type: '4',
         name: 'IdlePowerAux§',
         description: 'Valore potenza passaggio ON -> STANDBY consumi elettrici Aux§',
         serverName: 'MEM',
@@ -602,7 +602,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 4,
+        type: '4',
         name: 'StatoONAux§',
         description: '1 = stato ON, 0 = stato STANDBY',
         serverName: 'MEM',
@@ -612,7 +612,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 4,
+        type: '4',
         name: 'StatoSTANDBYAux§',
         description: '0 = stato ON, 1 = stato STANDBY',
         serverName: 'MEM',
@@ -622,7 +622,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 5,
+        type: '5',
         name: 'PowerEqAux§_INT',
         description: 'Potenza attiva trifase - d3scription - Letta come INTEGER',
         serverName: 'MODBUS',
@@ -632,7 +632,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'PowerEqAux§_Onchange',
         description: 'Per ONCHANGE (script): stesso valore di PowerEqAux§',
         serverName: 'MEM',
@@ -642,7 +642,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 5,
+        type: '5',
         name: 'PowerEqAux§',
         description: 'Potenza attiva trifase - d3scription [kW] - Convertita',
         serverName: 'MEM',
@@ -652,7 +652,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 5,
+        type: '5',
         name: 'ReactPowerEqAux§_INT',
         description: 'Potenza reattiva trifase - d3scription [kvar] - letta come INTEGER',
         serverName: 'MODBUS',
@@ -662,7 +662,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'ReactPowerEqAux§',
         description: 'Potenza reattiva trifase - d3scription [kvar] - Convertita',
         serverName: 'MEM',
@@ -672,7 +672,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 5,
+        type: '5',
         name: 'CosphiAux§_INT',
         description: 'Fattore di potenza - d3scription - Letto come INTEGER',
         serverName: 'MODBUS',
@@ -682,7 +682,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'CosphiAux§',
         description: 'Fattore di potenza - d3scription - Convertito',
         serverName: 'MEM',
@@ -692,7 +692,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 5,
+        type: '5',
         name: 'EnergyAux§',
         description: 'Energia attiva assorbita (positiva) - d3scription [kWh]',
         serverName: 'MODBUS',
@@ -702,7 +702,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'NegEnergyAux§',
         description: 'Energia attiva ceduta (negativa) - d3scription [kWh]',
         serverName: 'MODBUS',
@@ -712,7 +712,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'VoltageL1NAux§',
         description: 'Tensione tra fase 1 e neutro - d3scription [V]',
         serverName: 'MODBUS',
@@ -722,7 +722,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'VoltageL2NAux§',
         description: 'Tensione tra fase 2 e neutro - d3scription [V]',
         serverName: 'MODBUS',
@@ -732,7 +732,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'VoltageL3NAux§',
         description: 'Tensione tra fase 3 e neutro - d3scription [V]',
         serverName: 'MODBUS',
@@ -742,7 +742,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'CurrentL1Aux§',
         description: 'Corrente fase 1 - d3scription [A]',
         serverName: 'MODBUS',
@@ -752,7 +752,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'CurrentL2Aux§',
         description: 'Corrente fase 2 - d3scription [A]',
         serverName: 'MODBUS',
@@ -762,7 +762,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'CurrentL3Aux§',
         description: 'Corrente fase 3 - d3scription [A]',
         serverName: 'MODBUS',
@@ -772,7 +772,7 @@ export const source: sourceMultimetri[] = [
         addressIp: 'ç',
     },
     {
-        type: 5,
+        type: '5',
         name: 'IdlePowerAux§',
         description: 'Valore potenza passaggio ON -> STANDBY consumi elettrici Aux§',
         serverName: 'MEM',
@@ -782,7 +782,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 5,
+        type: '5',
         name: 'StatoONAux§',
         description: '1 = stato ON, 0 = stato STANDBY',
         serverName: 'MEM',
@@ -792,7 +792,7 @@ export const source: sourceMultimetri[] = [
         addressIp: '',
     },
     {
-        type: 5,
+        type: '5',
         name: 'StatoSTANDBYAux§',
         description: '0 = stato ON, 1 = stato STANDBY',
         serverName: 'MEM',

@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import { sourceMultimetri } from "./source.entity";
 
 const SourceSchema = new Schema<sourceMultimetri>({
-    type: { type: Number, required: true },
+    type: { type: String, required: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
     serverName: { type: String, required: true },
