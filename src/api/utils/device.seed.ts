@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { multimetri } from './multimetri.data';
-import { MultimetriModel } from '../multimetri/multimetri.model';
+import { device } from './device.data';
+import { DeviceModel } from '../device/device.model';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -18,12 +18,12 @@ mongoose.connect(uri)
     console.log('📡 Connessione riuscita');
 
     // 🧹 (opzionale) svuota la collezione se vuoi partire da zero
-    await MultimetriModel.deleteMany({});
+    await DeviceModel.deleteMany({});
 
     // 🚀 inserisce i dati
-    await MultimetriModel.insertMany(multimetri);
+    await DeviceModel.insertMany(device);
 
-    console.log('✅ Multimetri inseriti con successo!');
+    console.log('✅ Valori inseriti con successo!');
     mongoose.disconnect();
   })
   .catch(err => {
