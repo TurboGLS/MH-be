@@ -11,9 +11,10 @@ const userIdentitySchema = new Schema<UserIdentity>({
         },
         _id: false
     },
+    refreshToken: [String]
 });
 
-userIdentitySchema.pre('findOne', function(next) {
+userIdentitySchema.pre('findOne', function (next) {
     this.populate('user');
     next();
 });

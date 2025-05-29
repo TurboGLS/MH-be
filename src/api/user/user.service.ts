@@ -74,6 +74,11 @@ export class UserService {
         });
         return newUser;
     }
+
+    async getById(userId: string): Promise<User | null> {
+        const user = await UserModel.findById(userId);
+        return user ? user.toObject() : null;
+    }
 }
 
 export default new UserService();
