@@ -4,6 +4,7 @@ import { me } from "./user.controller";
 
 const router = Router();
 
-router.get('/me', isAuthenticated, me);
+router.use(isAuthenticated);
+router.get('/me', me);
 
 export default router;
