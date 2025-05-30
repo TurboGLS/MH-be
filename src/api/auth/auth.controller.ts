@@ -43,23 +43,33 @@ export const login = async (
     res: Response,
     next: NextFunction
 ) => {
+
     passport.authenticate('local', { session: false },
-        async (err, user, info) => {
+        async (loginErr, user, info) => {
             try {
-                if (err) {
-                    next(err);
+                if(loginErr) {
+                    next(loginErr);
                     return;
                 }
 
                 if (!user) {
-                    res.status(401).json({ error: 'LoginError', message: info?.message || 'Invalid credentials' });
+                    res.status(401);
+                    res.json({
+                        error: 'LoginError',
+                        message: info.message
+                    });
                     return;
                 }
-
+                
                 const { token, refreshToken } = await tokenSrv.generateTokenPair(user.id);
 
-                res.status(200).json({ user, token, refreshToken });
-            } catch (err) {
+                res.status(200);
+                res.json({
+                    user,
+                    token,
+                    refreshToken
+                });
+            } catch(err) {
                 next(err);
             }
         }
@@ -67,10 +77,10 @@ export const login = async (
 }
 
 export const refresh = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) => {
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) => {
     try {
         const { refreshToken } = req.body;
 
@@ -78,7 +88,11 @@ export const refresh = async (
         try {
             payload = jwt.verify(refreshToken, JWT_SECRET) as User;
         } catch(verifyErr) {
-            res.status(401).json({ error: 'RefreshTokenError', message: 'Invalid Token' });
+            res.status(401);
+            res.json({
+                error: 'RefreshTokenError',
+                message: 'Invalid token'
+            });
             return;
         }
 
@@ -87,14 +101,19 @@ export const refresh = async (
             console.log('unset');
             tokenSrv.removeToken(payload.id!);
 
-            res.status(401).json({ error: 'RefreshTokenError', message: 'Invalid Token' });
-            return;
+            res.status(401);
+            res.json({            
+                error: 'RefreshTokenError',
+                message: 'Invalid token'
+            });
+            return
         }
 
         const newTokens = await tokenSrv.generateTokenPair(payload.id!, refreshToken);
 
-        res.status(200).json(newTokens);
-    } catch (err) {
+        res.status(200);
+        res.json(newTokens);
+    }catch(err) {
         next(err);
     }
 }

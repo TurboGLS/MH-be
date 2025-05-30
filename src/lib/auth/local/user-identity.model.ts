@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import { Schema, model } from 'mongoose';
 import { UserIdentity } from "./user-identity.entity";
 
 const userIdentitySchema = new Schema<UserIdentity>({
