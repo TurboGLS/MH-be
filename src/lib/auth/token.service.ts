@@ -5,7 +5,7 @@ import userSrv from '../../api/user/user.service';
 
 export class TokenSerice {
 
-    async generateTokenPair(userId: string, oldToken?: string): Promise<{token:string, refreshToken:string}> {
+    async generateTokenPair(userId: string, oldToken?: string): Promise<{ token: string, refreshToken: string }> {
         const user = await userSrv.getById(userId);
         if (!user) {
             throw new Error('User not found');
@@ -19,25 +19,32 @@ export class TokenSerice {
         };
     }
 
-    async verifyMatch(userId: string, token:string): Promise<boolean> {
-        return !!(await UserIdentityModel.exists({user: userId, refreshToken: token}));
+    async verifyMatch(userId: string, token: string): Promise<boolean> {
+        return !!(await UserIdentityModel.exists({ user: userId, refreshToken: token }));
     }
 
     async assignTokenToUser(userId: string, token: string, oldToken?: string): Promise<void> {
         let updated;
         if (!oldToken) {
-            updated = await UserIdentityModel.findOneAndUpdate({user: userId}, {$push: {refreshToken: token}});
+            // Se non c’è oldToken, metto il refreshToken in un array nuovo (non faccio push)
+            updated = await UserIdentityModel.findOneAndUpdate(
+                { user: userId },
+                { $set: { refreshToken: [token] } }  // resetto l’array a un solo token
+            );
         } else {
-            updated = await UserIdentityModel.findOneAndUpdate({user: userId, refreshToken: oldToken}, {$set: {'refreshToken.$': token}});
+            // Sostituisco il token vecchio con quello nuovo
+            updated = await UserIdentityModel.findOneAndUpdate(
+                { user: userId, refreshToken: oldToken },
+                { $set: { 'refreshToken.$': token } }
+            );
         }
         if (!updated) {
             throw new Error('User not found');
         }
-        return;
     }
 
     async removeToken(userId: string) {
-        await UserIdentityModel.findOneAndUpdate({user: userId}, {$unset: {refreshToken: 1}});
+        await UserIdentityModel.findOneAndUpdate({ user: userId }, { $unset: { refreshToken: 1 } });
     }
 }
 
