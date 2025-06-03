@@ -1,5 +1,6 @@
 import { device } from "../utils/device.data";
 import { SourceMultimetriModel } from '../sourceMultimetri/sourceMultimetri.model';
+import { getDataByType } from "../sourceMultimetri/sourceMultimetri.service";
 
 interface VarListOptions {
     model: string;
@@ -21,7 +22,7 @@ export async function varListGenerator(options: VarListOptions) {
     const type = deviceInfo.Type;
 
     // Filtro i parametri per type
-    const baseParams = await SourceMultimetriModel.find({ type });
+    const baseParams = await getDataByType(type);
     if (!baseParams || baseParams.length === 0) {
         throw new Error(`Nessun parametro trovato per type ${type}`);
     }
@@ -48,7 +49,7 @@ export async function varListGenerator(options: VarListOptions) {
             }
 
             // Rimuovo campi indesiderati
-            const { _id, __v, addressModBus, addressDeviceId, addressIp, ...cleaned } = replacedParam;
+            const { type, _id, __v, addressModBus, addressDeviceId, addressIp, ...cleaned } = replacedParam;
 
             varlist.push(cleaned);
         }
