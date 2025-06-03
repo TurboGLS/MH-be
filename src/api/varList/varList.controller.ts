@@ -1,7 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import { device } from "../utils/device.data";
-import { DeviceModel } from "../device/device.model";
-import { sourceMultimetri } from "../utils/sourceMultimetri.data";
 import { Parser } from "json2csv";
 import { varListGenerator } from "./varList.service";
 
@@ -39,8 +36,10 @@ export const downloadVarList = async (
             combinedVarlist.push(...varlistPart);
         }
 
-        const parser = new Parser({ quote: "" });
-        const csv = parser.parse(combinedVarlist);
+        const parser = new Parser({ quote: '', delimiter: ';' });
+        let csv = parser.parse(combinedVarlist);
+
+        csv = csv.replace(/"/g, '');
 
         res.setHeader("Content-Type", "text/csv");
         res.setHeader("Content-Disposition", "attachment; filename=var_lst.csv");

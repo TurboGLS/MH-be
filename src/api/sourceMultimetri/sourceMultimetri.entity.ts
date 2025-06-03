@@ -1,10 +1,10 @@
 export type SourceMultimetri = {
-    type: string;
-    name: string;
-    description: string;
-    serverName: string;
-    topicName: string;
-    addressModBus: string;
-    addressDeviceId?: string;
-    addressIp?: string;
+    Type: string;
+    Name: string;
+    Description: string;
+    ServerName: string;
+    TopicName: string;
+    AddressModBus: string;
+    AddressDeviceId?: string;
+    AddressIp?: string;
 }

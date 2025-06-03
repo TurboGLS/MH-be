@@ -1,5 +1,4 @@
 import { device } from "../utils/device.data";
-import { SourceMultimetriModel } from '../sourceMultimetri/sourceMultimetri.model';
 import { getDataByType } from "../sourceMultimetri/sourceMultimetri.service";
 
 interface VarListOptions {
@@ -44,12 +43,13 @@ export async function varListGenerator(options: VarListOptions) {
                 }
             }
 
+            // sostituisco la descrizione se presente
             if (description) {
-                replacedParam.description = description;
+                replacedParam.Description = description;
             }
 
             // Rimuovo campi indesiderati
-            const { type, _id, __v, addressModBus, addressDeviceId, addressIp, ...cleaned } = replacedParam;
+            const { Type: Type, _id, __v, AddressModBus, AddressDeviceId, AddressIp, ...cleaned } = replacedParam;
 
             varlist.push(cleaned);
         }

@@ -2,14 +2,14 @@ import { Schema, model } from "mongoose";
 import { SourceMultimetri } from "./sourceMultimetri.entity";
 
 const SourceSchema = new Schema<SourceMultimetri>({
-    type: { type: String, required: true },
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    serverName: { type: String, required: true },
-    topicName: { type: String, required: true },
-    addressModBus: { type: String, required: true },
-    addressDeviceId: { type: String, required: false },
-    addressIp: { type: String, required: false },
+    Type: { type: String, required: true },
+    Name: { type: String, required: true },
+    Description: { type: String, required: true },
+    ServerName: { type: String, required: true },
+    TopicName: { type: String, required: true },
+    AddressModBus: { type: String, required: true },
+    AddressDeviceId: { type: String, required: false },
+    AddressIp: { type: String, required: false },
 });
 
 SourceSchema.set('toJSON', {
@@ -17,17 +17,17 @@ SourceSchema.set('toJSON', {
     transform: (_, ret) => {
         delete ret._id;
         delete ret.__v;
-        delete ret.addressModBus;
-        delete ret.addressDeviceId;
-        delete ret.addressIp;
+        delete ret.AddressModBus;
+        delete ret.AddressDeviceId;
+        delete ret.AddressIp;
         delete ret.id;
         return ret;
     },
 });
 
 // creare virtual per address unico
-SourceSchema.virtual('address').get(function() {
-    const parts = [this.addressModBus, this.addressDeviceId, this.addressIp]
+SourceSchema.virtual('Address').get(function() {
+    const parts = [this.AddressModBus, this.AddressDeviceId, this.AddressIp]
         .filter(part => part && part.trim() !== '');
     return parts.join(',');
 });
