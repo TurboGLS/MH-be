@@ -292,6 +292,7 @@ export const downloadVarList = async (
         ]
 
         const fields = [
+            'Id',
             'Name',
             'Description',
             'ServerName',
