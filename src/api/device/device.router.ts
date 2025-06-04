@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { getDeviceCategory, getDeviceModel } from "./device.controller";
+import { getDeviceInfo, getDeviceModel, getCategorie } from "./device.controller";
 
 const router = Router();
 
 router.get('/modelli', getDeviceModel);
-router.get('/categoria', getDeviceCategory);
+router.get('/categoriaInfo', getDeviceInfo);
+router.get('/categoria', getCategorie);
 
 export default router;

@@ -7,3 +7,7 @@ export async function getDeviceByType(tipo: string): Promise<string[]> {
 export async function getDeviceByCategory(categoria: string): Promise<string[]> {
     return await DeviceModel.find({ Categoria: categoria });
 }
+
+export async function getCategory(): Promise<string[]> {
+    return await DeviceModel.distinct('Categoria');
+}

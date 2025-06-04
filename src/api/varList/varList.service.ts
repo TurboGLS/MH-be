@@ -43,9 +43,9 @@ export async function varListGenerator(options: VarListOptions) {
                 }
             }
 
-            // sostituisco la descrizione se presente
-            if (description) {
-                replacedParam.Description = description;
+            // Sostituisco solo il placeholder 'd3scription' nella Description (se presente)
+            if (description && typeof replacedParam.Description === 'string') {
+                replacedParam.Description = replacedParam.Description.replace(/d3scription/g, description);
             }
 
             // Rimuovo campi indesiderati

@@ -20,7 +20,7 @@ export const downloadVarList = async (
         for (const item of request) {
             const { model, auxQuantity, description, device, ipAddress } = item;
 
-            if (!model || !auxQuantity || !description || !device || !ipAddress) {
+            if (!model || !auxQuantity || !device || !ipAddress) {
                 res.status(400).json({ message: "Parametri obbligatori mancanti" });
                 return;
             }

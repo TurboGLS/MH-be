@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { getDeviceByCategory, getDeviceByType } from "./device.service";
-import { model } from "mongoose";
+import { getCategory, getDeviceByCategory, getDeviceByType } from "./device.service";
 
 export const getDeviceModel = async (
     req: Request,
@@ -28,7 +27,7 @@ export const getDeviceModel = async (
     }
 };
 
-export const getDeviceCategory = async (
+export const getDeviceInfo = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -47,6 +46,20 @@ export const getDeviceCategory = async (
         }
 
         res.status(200).json(modelli)
+    } catch (err) {
+        next(err);
+    }
+}
+
+export const getCategorie = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const categories = await getCategory();
+
+        res.status(200).json(categories);
     } catch (err) {
         next(err);
     }
