@@ -49,7 +49,7 @@ export async function varListGenerator(options: VarListOptions) {
             }
 
             // Rimuovo campi indesiderati
-            const { Type: Type, _id, __v, AddressModBus, AddressDeviceId, AddressIp, ...cleaned } = replacedParam;
+            const { DeviceType: Type, _id, __v, AddressModBus, AddressDeviceId, AddressIp, ...cleaned } = replacedParam;
 
             varlist.push(cleaned);
         }
