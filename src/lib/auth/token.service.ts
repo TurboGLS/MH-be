@@ -24,31 +24,29 @@ export class TokenSerice {
     }
 
     async assignTokenToUser(userId: string, token: string, oldToken?: string): Promise<void> {
+        let updated;
         if (!oldToken) {
-            // Resetto l'array a un singolo token
-            const updated = await UserIdentityModel.findOneAndUpdate(
+            updated = await UserIdentityModel.findOneAndUpdate(
                 { user: userId },
-                { $set: { refreshToken: [token] } }
+                { $set: { refreshToken: [token] } },
+                { new: true }
             );
-            if (!updated) {
-                throw new Error('User not found');
-            }
         } else {
-            // Rimuovo il token vecchio e aggiungo quello nuovo
-            const updatedPull = await UserIdentityModel.findOneAndUpdate(
-                { user: userId },
-                { $pull: { refreshToken: oldToken } }
+            updated = await UserIdentityModel.findOneAndUpdate(
+                { user: userId, refreshToken: oldToken },
+                { $set: { 'refreshToken.$': token } },
+                { new: true }
             );
-            if (!updatedPull) {
-                throw new Error('User not found');
-            }
 
-            const updatedPush = await UserIdentityModel.findOneAndUpdate(
-                { user: userId },
-                { $push: { refreshToken: token } }
-            );
-            if (!updatedPush) {
-                throw new Error('User not found');
+            if (!updated) {
+                updated = await UserIdentityModel.findOneAndUpdate(
+                    { user: userId },
+                    { $push: { refreshToken: token } },
+                    { new: true }
+                );
+                if (!updated) {
+                    throw new Error('User not found');
+                }
             }
         }
     }
