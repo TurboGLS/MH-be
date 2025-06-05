@@ -8,6 +8,9 @@ import passport from "passport";
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from "../../lib/auth/jwt/jwt-strategy";
 import { User } from "../user/user.entity";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const register = async (
     req: TypedRequest<AddUserDTO>,
@@ -15,8 +18,20 @@ export const register = async (
     next: NextFunction
 ) => {
     try {
+        const dominioAdmin = process.env.DOMINIO || '';
+
         const userData = omit(req.body, 'username', 'password') as User;
         const credentialsData = pick(req.body, 'username', 'password');
+
+        // Controllo dominio email
+        const email = (userData.email ?? '').toLowerCase();
+
+        if (email.endsWith(dominioAdmin?.toLowerCase())) {
+            userData.role = 'admin';
+        }
+        else {
+            userData.role = 'user';
+        }
 
         const newUser = await userSrv.add(userData, credentialsData);
 
