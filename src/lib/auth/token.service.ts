@@ -10,8 +10,8 @@ export class TokenSerice {
         if (!user) {
             throw new Error('User not found');
         }
-        const token = jwt.sign(user, JWT_SECRET, { expiresIn: '15 minutes' });
-        const refreshToken = jwt.sign(user, JWT_SECRET, { expiresIn: '3 hours' });
+        const token = jwt.sign(user, JWT_SECRET, { expiresIn: '10 seconds' });
+        const refreshToken = jwt.sign(user, JWT_SECRET, { expiresIn: '30 seconds' });
         await this.assignTokenToUser(user.id!, refreshToken, oldToken);
         return {
             token,
@@ -24,22 +24,32 @@ export class TokenSerice {
     }
 
     async assignTokenToUser(userId: string, token: string, oldToken?: string): Promise<void> {
-        let updated;
         if (!oldToken) {
-            // Se non c’è oldToken, metto il refreshToken in un array nuovo (non faccio push)
-            updated = await UserIdentityModel.findOneAndUpdate(
+            // Resetto l'array a un singolo token
+            const updated = await UserIdentityModel.findOneAndUpdate(
                 { user: userId },
-                { $set: { refreshToken: [token] } }  // resetto l’array a un solo token
+                { $set: { refreshToken: [token] } }
             );
+            if (!updated) {
+                throw new Error('User not found');
+            }
         } else {
-            // Sostituisco il token vecchio con quello nuovo
-            updated = await UserIdentityModel.findOneAndUpdate(
-                { user: userId, refreshToken: oldToken },
-                { $set: { 'refreshToken.$': token } }
+            // Rimuovo il token vecchio e aggiungo quello nuovo
+            const updatedPull = await UserIdentityModel.findOneAndUpdate(
+                { user: userId },
+                { $pull: { refreshToken: oldToken } }
             );
-        }
-        if (!updated) {
-            throw new Error('User not found');
+            if (!updatedPull) {
+                throw new Error('User not found');
+            }
+
+            const updatedPush = await UserIdentityModel.findOneAndUpdate(
+                { user: userId },
+                { $push: { refreshToken: token } }
+            );
+            if (!updatedPush) {
+                throw new Error('User not found');
+            }
         }
     }
 

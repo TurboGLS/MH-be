@@ -18,16 +18,16 @@ export const downloadVarList = async (
         let combinedVarlist: any[] = [];
 
         for (const item of request) {
-            const { model, auxQuantity, description, device, ipAddress } = item;
+            const { model, auxQuantity: auxNumber, description, device, ipAddress } = item;
 
-            if (!model || !auxQuantity || !device || !ipAddress) {
+            if (!model || !auxNumber || !device || !ipAddress) {
                 res.status(400).json({ message: "Parametri obbligatori mancanti" });
                 return;
             }
 
             const varlistPart = await varListGenerator({
                 model,
-                auxQuantity,
+                auxQuantity: auxNumber,
                 description,
                 device,
                 ipAddress

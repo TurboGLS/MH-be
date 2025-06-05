@@ -3,14 +3,14 @@ import { getDataByType } from "../sourceMultimetri/sourceMultimetri.service";
 
 interface VarListOptions {
     model: string;
-    auxQuantity: number;
+    auxQuantity: string;
     description?: string;
-    device: number;
+    device: string;
     ipAddress: string;
 }
 
 export async function varListGenerator(options: VarListOptions) {
-    const { model, auxQuantity, device: deviceId, ipAddress, description } = options;
+    const { model, auxQuantity, description, device: deviceId, ipAddress } = options;
 
     // Trovo il device in base al modello selezionato
     const deviceInfo = device.find(d => d.Modello === model);
@@ -28,7 +28,12 @@ export async function varListGenerator(options: VarListOptions) {
 
     const varlist: any[] = [];
 
-    for (let i = 1; i <= auxQuantity; i++) {
+    const auxCount = parseInt(auxQuantity, 10);
+    if (isNaN(auxCount) || auxCount <= 0) {
+        throw new Error(`Quantità ausiliari non valida: ${auxQuantity}`);
+    }
+
+    for (let i = 1; i <= auxCount; i++) {
         for (const param of baseParams) {
             // Ottengo l'oggetto con virtuals inclusi
             const replacedParam = param.toJSON({ virtuals: true });
