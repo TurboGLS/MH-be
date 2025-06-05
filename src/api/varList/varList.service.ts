@@ -3,14 +3,14 @@ import { getDataByType } from "../sourceMultimetri/sourceMultimetri.service";
 
 interface VarListOptions {
     model: string;
-    auxQuantity: string;
+    auxNumber: string;
     description?: string;
     device: string;
     ipAddress: string;
 }
 
 export async function varListGenerator(options: VarListOptions) {
-    const { model, auxQuantity, description, device: deviceId, ipAddress } = options;
+    const { model, auxNumber: auxQuantity, description, device: deviceId, ipAddress } = options;
 
     // Trovo il device in base al modello selezionato
     const deviceInfo = device.find(d => d.Modello === model);
@@ -33,31 +33,26 @@ export async function varListGenerator(options: VarListOptions) {
         throw new Error(`Quantità ausiliari non valida: ${auxQuantity}`);
     }
 
-    for (let i = 1; i <= auxCount; i++) {
-        for (const param of baseParams) {
-            // Ottengo l'oggetto con virtuals inclusi
-            const replacedParam = param.toJSON({ virtuals: true });
+    for (const param of baseParams) {
+        const replacedParam = param.toJSON({ virtuals: true });
 
-            // sostituisco i placeholder
-            for (const key in replacedParam) {
-                if (typeof replacedParam[key] === 'string') {
-                    replacedParam[key] = replacedParam[key]
-                        .replace(/§/g, i.toString())
-                        .replace(/@/g, deviceId.toString())
-                        .replace(/ç/g, ipAddress);
-                }
+        // sostituisco i placeholder con il numero totale di AUX e gli altri parametri
+        for (const key in replacedParam) {
+            if (typeof replacedParam[key] === 'string') {
+                replacedParam[key] = replacedParam[key]
+                    .replace(/§/g, auxCount.toString())
+                    .replace(/@/g, deviceId.toString())
+                    .replace(/ç/g, ipAddress);
             }
-
-            // Sostituisco solo il placeholder 'd3scription' nella Description (se presente)
-            if (description && typeof replacedParam.Description === 'string') {
-                replacedParam.Description = replacedParam.Description.replace(/d3scription/g, description);
-            }
-
-            // Rimuovo campi indesiderati
-            const { DeviceType: Type, _id, __v, AddressModBus, AddressDeviceId, AddressIp, ...cleaned } = replacedParam;
-
-            varlist.push(cleaned);
         }
+
+        if (description && typeof replacedParam.Description === 'string') {
+            replacedParam.Description = replacedParam.Description.replace(/d3scription/g, description);
+        }
+
+        const { DeviceType: Type, _id, __v, AddressModBus, AddressDeviceId, AddressIp, ...cleaned } = replacedParam;
+
+        varlist.push(cleaned);
     }
 
     return varlist;

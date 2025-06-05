@@ -18,7 +18,7 @@ export const downloadVarList = async (
         let combinedVarlist: any[] = [];
 
         for (const item of request) {
-            const { model, auxQuantity: auxNumber, description, device, ipAddress } = item;
+            const { model, auxNumber, description, device, ipAddress } = item;
 
             if (!model || !auxNumber || !device || !ipAddress) {
                 res.status(400).json({ message: "Parametri obbligatori mancanti" });
@@ -27,7 +27,7 @@ export const downloadVarList = async (
 
             const varlistPart = await varListGenerator({
                 model,
-                auxQuantity: auxNumber,
+                auxNumber,
                 description,
                 device,
                 ipAddress
