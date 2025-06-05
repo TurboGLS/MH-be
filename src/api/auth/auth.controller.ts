@@ -24,7 +24,7 @@ export const register = async (
         const credentialsData = pick(req.body, 'username', 'password');
 
         // Controllo dominio email
-        const email = (userData.email ?? '').toLowerCase();
+        const email = (userData.email ?? '').trim().toLowerCase();
 
         if (email.endsWith(dominioAdmin?.toLowerCase())) {
             userData.role = 'admin';
