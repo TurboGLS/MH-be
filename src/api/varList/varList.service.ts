@@ -1,5 +1,5 @@
 import { DeviceModel } from "../device/device.model";
-import { getDataFromSensori } from "../sourceFotovoltaici/sourceFotovoltaici.service";
+import { getDataFromFotovoltaici } from "../sourceFotovoltaici/sourceFotovoltaici.service";
 import { getDataFromMultimetri } from "../sourceMultimetri/sourceMultimetri.service";
 
 interface VarListOptions {
@@ -65,7 +65,7 @@ export async function getDataByModel(deviceInfo) {
         case "Multimetro":
             return await getDataFromMultimetri(deviceInfo.Type);
         case "Fotovoltaico":
-            return await getDataFromSensori(deviceInfo.Type);
+            return await getDataFromFotovoltaici(deviceInfo.Type);
         default:
             throw new Error("Collection non supportata per modello");
     }
