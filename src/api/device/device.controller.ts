@@ -86,7 +86,7 @@ export const getCollectionDynamic = async (
 
         res.status(200).json(devices);
     } catch (err) {
-        // Se l'errore è dovuto a categoria non supportata, gestiamolo qui
+        // Se l'errore è dovuto a categoria non supportata
         if (err instanceof Error && err.message.startsWith('Categoria')) {
             res.status(400).json({ error: err.message });
             return;
