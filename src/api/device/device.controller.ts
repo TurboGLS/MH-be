@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { getCategory, getDeviceByCategory, getDeviceByType } from "./device.service";
+import { getCategory, getCollectionByCategoria, getDeviceByCategory, getDeviceByType } from "./device.service";
 
 export const getDeviceModel = async (
     req: Request,
@@ -61,6 +61,37 @@ export const getCategorie = async (
 
         res.status(200).json(categories);
     } catch (err) {
+        next(err);
+    }
+}
+
+export const getCollectionDynamic = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { categoria } = req.params;
+
+        if (!categoria) {
+            res.status(400).json({ error: 'Parametro "categoria" mancante.' });
+            return;
+        }
+
+        const devices = await getCollectionByCategoria(categoria);
+
+        if (!devices || devices.length === 0) {
+            res.status(404).json({ error: 'Nessun device trovato per la categoria richiesta' });
+        }
+
+        res.status(200).json(devices);
+    } catch (err) {
+        // Se l'errore è dovuto a categoria non supportata, gestiamolo qui
+        if (err instanceof Error && err.message.startsWith('Categoria')) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+
         next(err);
     }
 }

@@ -7,6 +7,7 @@
     "start": "ts-node src/index.ts",
     "seed:device": "ts-node src/api/utils/device.seed.ts",
     "seed:sourceMultimetri": "ts-node src/api/utils/sourceMultimetri.seed.ts",
+    "seed:sourceFotovoltaici": "ts-node src/api/utils/sourceFotovoltaici.seed.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "convert": "ts-node src/api/utils/fixKeys.ts"
   },

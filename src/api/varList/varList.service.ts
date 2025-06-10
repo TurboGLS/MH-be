@@ -1,7 +1,9 @@
-import { device } from "../utils/device.data";
-import { getDataByType } from "../sourceMultimetri/sourceMultimetri.service";
+import { DeviceModel } from "../device/device.model";
+import { getDataFromSensori } from "../sourceFotovoltaici/sourceFotovoltaici.service";
+import { getDataFromMultimetri } from "../sourceMultimetri/sourceMultimetri.service";
 
 interface VarListOptions {
+    categoria: string,
     model: string;
     auxNumber: string;
     description?: string;
@@ -9,28 +11,27 @@ interface VarListOptions {
     ipAddress: string;
 }
 
+async function findDeviceInfo(model: string) {
+    const deviceInfo = await DeviceModel.findOne({ Modello: model });
+    if (!deviceInfo) throw new Error(`Modello ${model} non trovato`);
+    return deviceInfo;
+}
+
 export async function varListGenerator(options: VarListOptions) {
     const { model, auxNumber: auxQuantity, description, device: deviceId, ipAddress } = options;
 
-    // Trovo il device in base al modello selezionato
-    const deviceInfo = device.find(d => d.Modello === model);
-    if (!deviceInfo) {
-        throw new Error(`Modello ${model} non trovato`);
-    }
+    const deviceInfo = await findDeviceInfo(model);
+    const baseParams = await getDataByModel(deviceInfo);
 
-    const type = deviceInfo.Type;
-
-    // Filtro i parametri per type
-    const baseParams = await getDataByType(type);
     if (!baseParams || baseParams.length === 0) {
-        throw new Error(`Nessun parametro trovato per type ${type}`);
+        throw new Error(`Nessun parametro trovato per modello ${model}`);
     }
 
     const varlist: any[] = [];
 
     const auxCount = parseInt(auxQuantity, 10);
     if (isNaN(auxCount) || auxCount <= 0) {
-        throw new Error(`Quantità ausiliari non valida: ${auxQuantity}`);
+        throw new Error(`Quantità aux non valida: ${auxQuantity}`);
     }
 
     for (const param of baseParams) {
@@ -56,4 +57,16 @@ export async function varListGenerator(options: VarListOptions) {
     }
 
     return varlist;
+}
+
+export async function getDataByModel(deviceInfo) {
+    // Trovo info modello
+    switch (deviceInfo.Categoria) {
+        case "Multimetro":
+            return await getDataFromMultimetri(deviceInfo.Type);
+        case "Fotovoltaico":
+            return await getDataFromSensori(deviceInfo.Type);
+        default:
+            throw new Error("Collection non supportata per modello");
+    }
 }
