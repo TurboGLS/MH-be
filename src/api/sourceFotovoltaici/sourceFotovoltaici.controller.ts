@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { getDataFromSensori } from "./sourceFotovoltaici.service";
+import { getDataFromFotovoltaici } from "./sourceFotovoltaici.service";
 
 export const getData = async (
     req: Request,
@@ -14,10 +14,10 @@ export const getData = async (
             return;
         }
 
-        const results = await getDataFromSensori(typeParam);
+        const results = await getDataFromFotovoltaici(typeParam);
 
         if (results.length === 0) {
-            res.status(404).json({ message: "Nessun multimetro trovato per il tipo richiesto" });
+            res.status(404).json({ message: "Nessun fotovoltaico trovato per il tipo richiesto" });
             return;
         }
 
