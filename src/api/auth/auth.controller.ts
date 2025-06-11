@@ -9,6 +9,7 @@ import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from "../../lib/auth/jwt/jwt-strategy";
 import { User } from "../user/user.entity";
 import dotenv from 'dotenv';
+import { sendVerificationEmail } from "../verification/verification.service";
 
 dotenv.config();
 
@@ -18,38 +19,23 @@ export const register = async (
     next: NextFunction
 ) => {
     try {
-        const dominioAdmin = process.env.DOMINIO || '';
-
         const userData = omit(req.body, 'username', 'password') as User;
         const credentialsData = pick(req.body, 'username', 'password');
 
-        // Controllo dominio email
-        const email = (userData.email ?? '').trim().toLowerCase();
-
-        if (email.endsWith(dominioAdmin?.toLowerCase())) {
-            userData.role = 'admin';
-        }
-        else {
-            userData.role = 'user';
-        }
-
         const newUser = await userSrv.add(userData, credentialsData);
 
-        res.json(newUser);
+        // Invio Email
+        const verifyUrl = `${process.env.FRONTEND_URL}/verify-email?token=${newUser.verificationToken}`;
+        await sendVerificationEmail(newUser.email, verifyUrl);
+
+        res.status(200).json({ message: 'Registrazione completata. Controlla la tua email per attivare l’account.' });
     } catch (err) {
-        if (err instanceof UserExistsError) {
+        if (err instanceof UserExistsError || err instanceof EmailExistsError || err instanceof MissingCredentialsError) {
             res.status(400).json({ error: err.name, message: err.message });
         }
-
-        if (err instanceof MissingCredentialsError) {
-            res.status(400).json({ error: err.name, message: err.message });
+        else {
+            next(err);
         }
-
-        if (err instanceof EmailExistsError) {
-            res.status(400).json({ error: err.name, message: err.message });
-        }
-
-        next(err);
     }
 }
 

@@ -5,6 +5,7 @@ import userRouter from './user/user.router';
 import authRouter from './auth/auth.router';
 import varlistRouter from './varList/varList.router';
 import sourceFotovoltaiciRouter from './sourceFotovoltaici/sourceFotovoltaici.router';
+import verificationRouter from './verification/verification.router';
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.use('/sourceFotovoltaici', sourceFotovoltaiciRouter);
 router.use('/users', userRouter);
 router.use('/varlist', varlistRouter);
 router.use(authRouter);
+router.use('/verification', verificationRouter);
 
 export default router;

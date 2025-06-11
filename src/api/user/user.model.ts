@@ -2,10 +2,13 @@ import { model, Schema } from "mongoose"
 import { User } from "./user.entity"
 
 const userSchema = new Schema<User>({
-    username: String,
-    email: String,
-    password: String,
+    username: { type: String },
+    email: { type: String, required: true, unique: true },
+    password: { type: String },
     role: { type: String, default: 'user' },
+    active: { type: Boolean, default: false},
+    verificationToken: { type: String },
+    verificationTokenExpires: { type: Date },
 });
 
 userSchema.set('toJSON', {
