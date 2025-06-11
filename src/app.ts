@@ -8,10 +8,20 @@ import './lib/auth/auth.handlers';
 
 const app = express();
 
-const allowedOrigin = process.env.ALLOWED_ORIGIN || '*';
+const allowedOrigins = [
+  process.env.ALLOWED_ORIGIN,
+  'http://localhost:4200',
+]
 
 app.use(cors({
-  origin: allowedOrigin,
+  origin: (origin, callback) => {
+    // Permetti richieste da origine assente (es. Postman) o da quelle incluse
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   optionsSuccessStatus: 200
 }));
 
