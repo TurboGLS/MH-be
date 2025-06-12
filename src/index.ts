@@ -2,8 +2,11 @@ import 'reflect-metadata';
 import dotenv from 'dotenv';
 dotenv.config();
 
+import './jobs/cleanupJob'; 
+
 import app from './app';
 import mongoose from 'mongoose';
+
 
 mongoose.set('debug', true);
 mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/local')

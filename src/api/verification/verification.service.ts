@@ -1,6 +1,7 @@
 import { UserModel } from "../user/user.model";
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import { UserIdentityModel } from "../../lib/auth/local/user-identity.model";
 
 dotenv.config();
 
@@ -13,6 +14,12 @@ export async function verifyEmailToken(token: string) {
 
     // Controllo qui la scadenza del token
     if (!user.verificationTokenExpires || user.verificationTokenExpires < new Date()) {
+        // Cancella utente da users
+        await UserModel.deleteOne({ _id: user._id });
+
+        // Cancella utente da useridentities
+        await UserIdentityModel.deleteOne({ userId: user._id });
+
         return null;
     }
 
