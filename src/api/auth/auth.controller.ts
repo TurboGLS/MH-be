@@ -28,7 +28,7 @@ export const register = async (
         const verifyUrl = `${process.env.FRONTEND_URL}/verify-email?token=${newUser.verificationToken}`;
         await sendVerificationEmail(newUser.email, verifyUrl);
 
-        res.status(200).json({ message: 'Registrazione completata. Controlla la tua email per attivare l’account.' });
+        res.status(200).json({ message: "Registrazione completata. Controlla la tua email per attivare l'account." });
     } catch (err) {
         if (err instanceof UserExistsError || err instanceof EmailExistsError || err instanceof MissingCredentialsError) {
             res.status(400).json({ error: err.name, message: err.message });

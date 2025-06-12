@@ -5,17 +5,14 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export async function verifyEmailToken(token: string) {
-    console.log('Verifying token:', token);
     const user = await UserModel.findOne({ verificationToken: token });
 
     if (!user) {
-        console.log('Found user:', user);
         return null;
     }
 
     // Controllo qui la scadenza del token
     if (!user.verificationTokenExpires || user.verificationTokenExpires < new Date()) {
-        console.log('Token expired or no expiration date:', user.verificationTokenExpires);
         return null;
     }
 
@@ -27,15 +24,17 @@ export async function verifyEmailToken(token: string) {
     return user;
 }
 
-const transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
-
 export async function sendVerificationEmail(to: string, url: string) {
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, // SSL
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        }
+    });
+
     await transporter.sendMail({
         from: `"MH-Support" <${process.env.EMAIL_USER}>`,
         to,
