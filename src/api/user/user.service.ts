@@ -2,10 +2,7 @@ import { UserIdentityModel } from "../../lib/auth/local/user-identity.model";
 import { User } from "./user.entity";
 import { UserModel } from "./user.model";
 import * as bcrypt from 'bcrypt';
-import * as dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-
-dotenv.config();
 
 const JWT_EMAIL_SECRET = process.env.JWT_EMAIL_SECRET || 'my_email_verification_secret';
 

@@ -1,9 +1,6 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import { sourceFotovoltaici } from './sourceFotovoltaici.data'; // o './source' a seconda del percorso
 import { SourceFotovoltaiciModel } from '../sourceFotovoltaici/sourceFotovoltaici.model'; // adatta il percorso al tuo progetto
-
-dotenv.config();
 
 const uri = process.env.MONGO_URI;
 

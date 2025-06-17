@@ -1,10 +1,6 @@
 import cron from 'node-cron';
 import { UserModel } from '../api/user/user.model';
 import { UserIdentityModel } from '../lib/auth/local/user-identity.model';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
 
 // Funzione di pulizia utenti non verificati con token scaduto
 async function cleanupUnverifiedUsers() {

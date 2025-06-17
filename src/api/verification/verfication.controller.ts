@@ -1,8 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import { verifyEmailToken } from "./verification.service";
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 export const verifyEmail = async (
     req: Request,

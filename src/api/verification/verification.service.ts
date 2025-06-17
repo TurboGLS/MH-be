@@ -1,9 +1,6 @@
 import { UserModel } from "../user/user.model";
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
 import { UserIdentityModel } from "../../lib/auth/local/user-identity.model";
-
-dotenv.config();
 
 export async function verifyEmailToken(token: string) {
     const user = await UserModel.findOne({ verificationToken: token });

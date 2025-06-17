@@ -1,9 +1,6 @@
 import mongoose from 'mongoose';
 import { device } from './device.data';
 import { DeviceModel } from '../device/device.model';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const uri = process.env.MONGO_URI;
 
