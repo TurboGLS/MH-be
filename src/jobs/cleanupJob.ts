@@ -1,6 +1,10 @@
 import cron from 'node-cron';
 import { UserModel } from '../api/user/user.model';
 import { UserIdentityModel } from '../lib/auth/local/user-identity.model';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 // Funzione di pulizia utenti non verificati con token scaduto
 async function cleanupUnverifiedUsers() {
@@ -13,19 +17,37 @@ async function cleanupUnverifiedUsers() {
             verificationTokenExpires: { $lt: now }
         });
 
-        for (const user of usersToDelete) {
-            await UserModel.deleteOne({ _id: user._id });
-            await UserIdentityModel.deleteOne({ userId: user._id });
-            console.log(`Deleted unverified user ${user._id}`);
+        if (usersToDelete.length === 0) {
+            console.log('Nessun utente non verificato da eliminare.');
+            return;
         }
+
+        // Stampa gli ID degli utenti che verranno eliminati
+        usersToDelete.forEach(user => {
+            console.log(`Scheduled deletion for unverified user ${user._id}`);
+        });
+
+        // Elimina in parallelo gli utenti e le relative identità
+        const deletePromises = usersToDelete.map(user =>
+            Promise.all([
+                UserModel.deleteOne({ _id: user._id }),
+                UserIdentityModel.deleteOne({ userId: user._id })
+            ])
+        );
+
+        await Promise.all(deletePromises);
+
+        console.log(`Deleted ${usersToDelete.length} unverified users.`);
 
     } catch (error) {
         console.error('Errore durante la pulizia utenti non verificati:', error);
     }
 }
 
-// Pianifica il job: ogni giorno a mezzanotte
-cron.schedule('0 0 * * *', () => {
-    console.log('Eseguo il job di pulizia utenti non verificati...');
-    cleanupUnverifiedUsers();
-});
+// Pianifica il job: ogni giorno a mezzanotte, solo in produzione
+if (process.env.NODE_ENV === 'production') {
+    cron.schedule('0 0 * * *', () => {
+        console.log('Eseguo il job di pulizia utenti non verificati...');
+        cleanupUnverifiedUsers();
+    });
+}
