@@ -71,7 +71,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "PowerEqAux§",
-            Description: "Potenza attiva trifase - d3scription  [kW] ",
+            Description: "Potenza attiva trifase - d3scription [kW] ",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+430776M",
@@ -137,7 +137,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "ReactPowerEqAux§",
-            Description: "Potenza reattiva trifase - d3scription  [kvar] - letta come FLOAT",
+            Description: "Potenza reattiva trifase - d3scription [kvar] - letta come FLOAT",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+431278L",
@@ -203,7 +203,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "CosphiAux§",
-            Description: "Fattore di potenza - d3scription  - Letto come FLOAT",
+            Description: "Fattore di potenza - d3scription - Letto come FLOAT",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+431434E",
@@ -269,7 +269,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "EnergyAux§",
-            Description: "Energia attiva assorbita (positiva) - d3scription  - [kWh]",
+            Description: "Energia attiva assorbita (positiva) - d3scription - [kWh]",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+430530E",
@@ -335,7 +335,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "VoltageL1NAux§",
-            Description: "Tensione tra fase 1 e neutro - d3scription  - [V]",
+            Description: "Tensione tra fase 1 e neutro - d3scription - [V]",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+430784M",
@@ -401,7 +401,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "VoltageL2NAux§",
-            Description: "Tensione tra fase 2 e neutro - d3scription  - [V]",
+            Description: "Tensione tra fase 2 e neutro - d3scription - [V]",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+430786M",
@@ -467,7 +467,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "VoltageL3NAux§",
-            Description: "Tensione tra fase 3 e neutro - d3scription  - [V]",
+            Description: "Tensione tra fase 3 e neutro - d3scription - [V]",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+430788M",
@@ -533,7 +533,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "CurrentL1Aux§",
-            Description: "Corrente fase 1 -d3scription  - [A]",
+            Description: "Corrente fase 1 -d3scription - [A]",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+430978M",
@@ -599,7 +599,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "CurrentL2Aux§",
-            Description: "Corrente fase 2 - d3scription  - [A]",
+            Description: "Corrente fase 2 - d3scription - [A]",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+430980M",
@@ -665,7 +665,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
         {
             DeviceType: "1",
             Name: "CurrentL3Aux§",
-            Description: "Corrente fase 3 - d3scription  - [A]",
+            Description: "Corrente fase 3 - d3scription - [A]",
             ServerName: "MODBUS",
             TopicName: "C",
             AddressModBus: "+430982M",
