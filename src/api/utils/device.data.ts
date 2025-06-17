@@ -55,5 +55,10 @@ export const device: Device[] = [
         Type: '5',
         Modello: 'EMU P20A000T (I-X-073)',
         Categoria: 'Multimetro'
+    },
+    {
+        Type: '1',
+        Modello: 'STP 10.0',
+        Categoria: 'Fotovoltaico'
     }
 ];

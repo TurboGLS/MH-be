@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // Sostituisci con il nome corretto del file se necessario
-const filePath = path.resolve(__dirname, 'sourceMultimetri.data.ts');
+const filePath = path.resolve(__dirname, 'sourceFotovoltaici.data.ts');
 
 console.log('📄 Sto cercando il file in:', filePath);
 
