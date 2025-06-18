@@ -47,3 +47,9 @@ if (process.env.NODE_ENV === 'production') {
         cleanupUnverifiedUsers();
     });
 }
+/* 
+questo job non si attiva ogni mezzanotte per pulire il db da utenti fantasma o fasulli, da risolvere
+potrebbe essere dovuto al cold start del deploy su koyeb anche se ne dubito infatti non ha senso visto che una volta partito lo script
+ci dovrebbe mettere un po' a farlo partire visto il cold start di base presente
+come in ogni chia,ata che faccio io poi nel deploy, se non quello non so cosa potrebbe essere
+*/

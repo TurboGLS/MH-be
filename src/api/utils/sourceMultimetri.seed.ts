@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import { sourceMultimetri } from './sourceMultimetri.data'; // o './source' a seconda del percorso
 import { SourceMultimetriModel } from '../sourceMultimetri/sourceMultimetri.model'; // adatta il percorso al tuo progetto
+
+// da usare su script avviati in locale o non sul progetto globale sennò va configurato su index.ts o app.ts
 import dotenv from 'dotenv';
 dotenv.config();
 
