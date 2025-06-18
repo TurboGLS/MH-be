@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import { sourceMultimetri } from './sourceMultimetri.data'; // o './source' a seconda del percorso
 import { SourceMultimetriModel } from '../sourceMultimetri/sourceMultimetri.model'; // adatta il percorso al tuo progetto
+import dotenv from 'dotenv';
+dotenv.config();
 
 const uri = process.env.MONGO_URI;
 
