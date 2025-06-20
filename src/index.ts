@@ -4,7 +4,7 @@ import 'reflect-metadata';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import './jobs/cleanupJob'; 
+import './jobs/scheduler';
 
 import app from './app';
 import mongoose from 'mongoose';
