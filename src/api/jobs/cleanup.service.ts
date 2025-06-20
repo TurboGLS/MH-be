@@ -21,7 +21,7 @@ export async function cleanupUnverifiedUsers(): Promise<number> {
     const deletePromises = usersToDelete.map(user =>
         Promise.all([
             UserModel.deleteOne({ _id: user._id }),
-            UserIdentityModel.deleteOne({ userId: user._id })
+            UserIdentityModel.deleteOne({ user: user._id })
         ])
     );
 
