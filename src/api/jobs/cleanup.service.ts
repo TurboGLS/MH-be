@@ -2,22 +2,28 @@ import { UserModel } from "../user/user.model";
 import { UserIdentityModel } from "../../lib/auth/local/user-identity.model";
 
 export async function cleanupUnverifiedUsers(): Promise<number> {
+    // prendo la data attuale
     const now = new Date();
 
+    // find sulla collection di User dove active è false è il token di verifica è minore (quindi scaduto) della data attuale
     const usersToDelete = await UserModel.find({
         active: false,
         verificationTokenExpires: { $lt: now }
     });
 
+    // se non trovo utenti fantasma passo un consol.log e chiudo la funzione
     if (usersToDelete.length === 0) {
         console.log('Nessun utente non verificato da eliminare.');
         return 0;
     }
 
+    // console.log per identificare tutti gli id degli utenti da eliminare
     usersToDelete.forEach(user => {
         console.log(`Scheduled deletion for unverified user ${user._id}`);
     });
 
+    // uso una promise per eliminare l'utente sia dalla collection UserModel e UserIdentityModel
+    // che ha lo stesso id, in UserModel _id, mentre in UserIdentityModel user
     const deletePromises = usersToDelete.map(user =>
         Promise.all([
             UserModel.deleteOne({ _id: user._id }),
@@ -25,8 +31,10 @@ export async function cleanupUnverifiedUsers(): Promise<number> {
         ])
     );
 
+    // aspetto che tutti gli utenti di tutte le collection vengano eliminati
     await Promise.all(deletePromises);
 
+    // console.log con il numero degli utenti eliminato da vedere nei log di koyeb per verifica
     console.log(`Deleted ${usersToDelete.length} unverified users.`);
     return usersToDelete.length;
 }
