@@ -9,7 +9,7 @@ export async function cleanupUnverifiedUsers(): Promise<number> {
     const usersToDelete = await UserModel.find({
         active: false,
         verificationTokenExpires: { $lt: now }
-    });
+    }).lean();
 
     // se non trovo utenti fantasma passo un consol.log e chiudo la funzione
     if (usersToDelete.length === 0) {
