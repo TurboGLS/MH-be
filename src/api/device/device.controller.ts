@@ -37,12 +37,14 @@ export const getDeviceInfo = async (
 
         if (!categoria) {
             res.status(400).json({ error: "Parametro 'categoria' mancante "});
+            return;
         }
 
         const modelli = await getDeviceByCategory(categoria);
 
         if (modelli.length === 0) {
-            res.status(400).json({ error: "Nessun modello trovato per la categoria richiesta" });
+            res.status(404).json({ error: "Nessun modello trovato per la categoria richiesta" });
+            return;
         }
 
         res.status(200).json(modelli)
@@ -82,6 +84,7 @@ export const getCollectionDynamic = async (
 
         if (!devices || devices.length === 0) {
             res.status(404).json({ error: 'Nessun device trovato per la categoria richiesta' });
+            return;
         }
 
         res.status(200).json(devices);

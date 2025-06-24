@@ -1,12 +1,14 @@
 import mongoose, { Collection, Schema, Model, mongo } from "mongoose";
 import { DeviceModel } from "./device.model";
+import { device } from "../utils/device.data";
 
 export async function getDeviceByType(tipo: string): Promise<string[]> {
     return await DeviceModel.find({ Type: tipo });
 }
 
 export async function getDeviceByCategory(categoria: string): Promise<string[]> {
-    return await DeviceModel.find({ Categoria: categoria });
+    const devices = await DeviceModel.find({ Categoria: categoria }, { Modello: 1, _id: 0 });
+    return devices.map(device => device.Modello);
 }
 
 export async function getCategory(): Promise<string[]> {
