@@ -1,6 +1,5 @@
-import mongoose, { Collection, Schema, Model, mongo } from "mongoose";
+import mongoose, { Schema, Model } from "mongoose";
 import { DeviceModel } from "./device.model";
-import { device } from "../utils/device.data";
 
 export async function getDeviceByType(tipo: string): Promise<string[]> {
     return await DeviceModel.find({ Type: tipo });
