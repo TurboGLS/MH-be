@@ -17,7 +17,7 @@ export const getDeviceModel = async (
         const modelli = await getDeviceByType(tipo);
 
         if (modelli.length === 0) {
-            res.status(404).json({ message: "Nessun modello trovato per il tipo richiesto" });
+            res.status(404).json({ error: "Nessun modello trovato per il tipo richiesto" });
             return;
         }
 
@@ -36,7 +36,7 @@ export const getDeviceInfo = async (
         const categoria = req.query.categoria as string;
 
         if (!categoria) {
-            res.status(400).json({ error: "Parametro 'categoria' mancante "});
+            res.status(400).json({ error: "Parametro 'categoria' mancante " });
             return;
         }
 
