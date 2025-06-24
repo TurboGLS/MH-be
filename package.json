@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "start": "ts-node src/index.ts",
+    "start": "node --max-old-space-size=384 --enable-source-maps -r ts-node/register src/index.ts",
     "seed:device": "ts-node src/api/utils/device.seed.ts",
     "seed:sourceMultimetri": "ts-node src/api/utils/sourceMultimetri.seed.ts",
     "seed:sourceFotovoltaici": "ts-node src/api/utils/sourceFotovoltaici.seed.ts",
