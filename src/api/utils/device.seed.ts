@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 import { device } from './device.data';
 import { DeviceModel } from '../device/device.model';
 
+// anche definendo in index.ts a livello globale, qui è necessario visto che è undefined se non presente
+import dotenv from 'dotenv';
+dotenv.config();
+
 const uri = process.env.MONGO_URI;
 
 if (!uri) {
