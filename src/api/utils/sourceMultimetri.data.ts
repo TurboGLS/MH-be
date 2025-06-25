@@ -3773,7 +3773,7 @@ export const sourceMultimetri: SourceMultimetri[] =
             AddressModBus: "+320498W",
             AddressDeviceId: "@",
             AddressIp: "ç",
-            Coef: "0,1",
+            Coef: "0.1",
             Offset: "0",
             LogEnabled: "0",
             AlEnabled: "0",
