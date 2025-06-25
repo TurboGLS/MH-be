@@ -60,5 +60,10 @@ export const device: Device[] = [
         Type: '1',
         Modello: 'STP 10.0',
         Categoria: 'Fotovoltaico'
-    }
+    },
+    {
+        Type: '2',
+        Modello: 'SAJ C6-100',
+        Categoria: 'Fotovoltaico'
+    },
 ];
