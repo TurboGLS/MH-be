@@ -1,4 +1,4 @@
-import { SourceFotovoltaici } from '../sourceFotovoltaici/sourceFotovoltaici.entity';
+import { SourceFotovoltaici } from '../../sourceFotovoltaici/sourceFotovoltaici.entity';
 
 export const sourceFotovoltaici: SourceFotovoltaici[] =
     [

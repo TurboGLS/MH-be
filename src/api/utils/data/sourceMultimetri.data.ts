@@ -1,4 +1,4 @@
-import { SourceMultimetri } from '../sourceMultimetri/sourceMultimetri.entity';
+import { SourceMultimetri } from '../../sourceMultimetri/sourceMultimetri.entity';
 
 export const sourceMultimetri: SourceMultimetri[] =
     [

@@ -1,4 +1,4 @@
-import { Device } from "../device/device.entity";
+import { Device } from "../../device/device.entity";
 
 export const device: Device[] = [
     {
