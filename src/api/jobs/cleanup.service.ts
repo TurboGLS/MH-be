@@ -3,7 +3,7 @@ import { UserIdentityModel } from "../../lib/auth/local/user-identity.model";
 
 export async function cleanupUnverifiedUsers(): Promise<number> {
     const now = new Date(); // data attuale
-    const batchSize = 500; // limito l'eliminazione a 500 utente alla volta
+    const batchSize = 500; // limito l'eliminazione a 500 utenti alla volta
     let totalDeleted = 0;
 
     console.log('Starting cleanup job...');
