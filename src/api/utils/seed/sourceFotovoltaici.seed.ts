@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { sourceFotovoltaici } from './sourceFotovoltaici.data'; // o './source' a seconda del percorso
-import { SourceFotovoltaiciModel } from '../sourceFotovoltaici/sourceFotovoltaici.model'; // adatta il percorso al tuo progetto
+import { sourceFotovoltaici } from '../data/sourceFotovoltaici.data'; // o './source' a seconda del percorso
+import { SourceFotovoltaiciModel } from '../../sourceFotovoltaici/sourceFotovoltaici.model'; // adatta il percorso al tuo progetto
 
 // da usare su script avviati in locale o non sul progetto globale sennò va configurato su index.ts o app.ts
 import dotenv from 'dotenv';
