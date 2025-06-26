@@ -2,9 +2,8 @@ import { UserModel } from "../user/user.model";
 import { UserIdentityModel } from "../../lib/auth/local/user-identity.model";
 
 export async function cleanupUnverifiedUsers(): Promise<number> {
-    // prendo la data attuale
-    const now = new Date();
-    const batchSize = 500;
+    const now = new Date(); // data attuale
+    const batchSize = 500; // limito l'eliminazione a 500 utente alla volta
     let totalDeleted = 0;
 
     console.log('Starting cleanup job...');
@@ -40,14 +39,18 @@ export async function cleanupUnverifiedUsers(): Promise<number> {
         // aspetto che tutti gli utenti di tutte le collection vengano eliminati
         await Promise.all(deletePromises);
 
+        // conteggio degli utenti eliminati
         totalDeleted += usersToDelete.length;
 
         // console.log con il numero degli utenti eliminato da vedere nei log di koyeb per verifica
         console.log(`Deleted ${usersToDelete.length} unverified users.`);
     }
 
+    // log finali
     console.log(`Pulizia completata. Utenti totali eliminati: ${totalDeleted}`);
+    // log per l'uso della memoria
     console.log('Memory usage after cleanup:', process.memoryUsage());
 
+    // return con il numero totale degli utenti eliminati stampati poi nel log
     return totalDeleted;
 }

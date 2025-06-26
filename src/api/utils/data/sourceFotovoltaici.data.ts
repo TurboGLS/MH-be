@@ -1054,7 +1054,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "",
             AlStat: "0",
             ChangeTime: "4/23/25 16:02",
-            TagValue: "1",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1120,7 +1120,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "AMP",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "27.65",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1186,7 +1186,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "AMP",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "27.89",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1252,7 +1252,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "AMP",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "27.65",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1318,7 +1318,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "KWH",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "27786",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1384,7 +1384,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "HTZ",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "50",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1450,7 +1450,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "HTZ",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "50.02",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1516,7 +1516,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "HTZ",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "50.05",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1582,7 +1582,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "KWT",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "19,149",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1714,7 +1714,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "",
             AlStat: "0",
             ChangeTime: "4/23/25 15:53",
-            TagValue: "2",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1780,7 +1780,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "47.8",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1846,7 +1846,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "VLT",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "240.5",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1912,7 +1912,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "VLT",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "240.2",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         },
@@ -1978,7 +1978,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Unit: "VLT",
             AlStat: "0",
             ChangeTime: "4/23/25 17:06",
-            TagValue: "238.7",
+            TagValue: "0",
             TagQuality: "65472",
             AlType: "0"
         }
