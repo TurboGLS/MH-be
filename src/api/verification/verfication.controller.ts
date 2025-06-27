@@ -15,7 +15,7 @@ export const verifyEmail = async (
             return;
         }
 
-        // forse qui bisogna fare il solito res.status(200).json({ message: 'Toke autorizzato' }); 
+        // forse qui bisogna fare il solito res.status(200).json({ message: 'Token autorizzato' }); 
         // al posto di avere il redirect direttamente nel backend così da avere una visualizzazione più pulita su postman e poi magari gestirlo meglio nel frontend
         // anche quello nel frontend
         // res.redirect(`${process.env.FRONTEND_URL}/verify-success`);
