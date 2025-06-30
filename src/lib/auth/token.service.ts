@@ -3,7 +3,7 @@ import { UserIdentityModel } from "./local/user-identity.model";
 import jwt from 'jsonwebtoken';
 import userSrv from '../../api/user/user.service';
 
-export class TokenSerice {
+export class TokenService {
 
     async generateTokenPair(userId: string, oldToken?: string): Promise<{ token: string, refreshToken: string }> {
         const user = await userSrv.getById(userId);
@@ -56,4 +56,4 @@ export class TokenSerice {
     }
 }
 
-export default new TokenSerice();
+export default new TokenService();
