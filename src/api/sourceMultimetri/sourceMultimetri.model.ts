@@ -57,7 +57,7 @@ const SourceSchema = new Schema<SourceMultimetri>({
     FEN: { type: String, required: false },
     FFN: { type: String, required: false },
     FCO: { type: String, required: false },
-    KPI: { type: String, required: true },
+    KPI: { type: String, required: false },
     UseCustomUnit: { type: String, required: true },
     Type: { type: String, required: true },
     Unit: { type: String, required: false },
