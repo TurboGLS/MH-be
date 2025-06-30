@@ -80,7 +80,7 @@ export const sourceFotovoltaici: SourceFotovoltaici[] =
             Coef: "0.001",
             Offset: "0",
             LogEnabled: "0",
-            AlEnabled: "0",
+            AlEnabled: "0", 
             AlBool: "0",
             MemTag: "0",
             MbsTcpEnabled: "0",
