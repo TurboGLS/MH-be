@@ -6,5 +6,5 @@ export type User = {
     role: 'admin' | 'user';
     active: boolean;
     verificationToken?: string;
-    verificationTokenExpires?: Date;
+    verificationTokenExpires?: Date;    
 }

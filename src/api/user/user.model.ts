@@ -4,7 +4,7 @@ import { User } from "./user.entity"
 const userSchema = new Schema<User>({
     username: { type: String },
     email: { type: String, required: true, unique: true },
-    password: { type: String },
+    password: { type: String }, 
     role: { type: String, default: 'user' },
     active: { type: Boolean, default: false},
     verificationToken: { type: String },
